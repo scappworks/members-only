@@ -1,0 +1,9 @@
+<h2>This is the index page</h2><br>
+
+<% @posts.each do |post| %>
+    <div>
+        <%= post.title %><br>
+        <%= post.body %><br>
+        <p>Written by: <%= post.user.username %></p>
+    </div><br>
+<% end %>
