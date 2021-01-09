@@ -22,12 +22,28 @@
                 <%= post.title %><br>
                 <%= post.body %><br>
                 <% if user_signed_in? %>
-                    <p class="has-text-right has-text-weight-bold pr-6">Written by: <%= post.user.username %></p>
+                    <p class="has-text-weight-bold">Written by: <%= post.user.username %></p>
                 <% end %>
                 </div>
         <% end %>
         </div>
     </div>
 
-    <div class="tile is-3"></div>
+    <div class="tile is-3">
+        <%= form_for :post, url: posts_path do |f| %>
+            <div id="field">
+                <%= f.label :title %> <br>
+                <%= f.text_field :title, autofocus: true, autocomplete: "Title" %>
+            </div>
+
+            <div id="field">
+                <%= f.label :body %> <br>
+                <%= f.text_area :body, autofocus: true, autocomplete: "Body" %>
+            </div>
+
+            <div id="actions">
+                <%= f.submit "Create post"%>
+            </div>
+        <% end %>
+    </div>
 </div>
