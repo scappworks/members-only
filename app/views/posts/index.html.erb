@@ -1,25 +1,33 @@
-<h2>This is the index page</h2><br>
-
-<% if user_signed_in? %>
-    Logged in as <strong><%= current_user.username %></strong><br>
-    <div>
-        <%= link_to "edit account", edit_user_registration_path %>
-        <%= link_to "sign out", destroy_user_session_path, method: :delete %>
-    </div>
-<% else %>
-    Not logged in<br>
-    <div>
-        <%= link_to "sign up", new_user_registration_path %>
-        <%= link_to "sign in", new_user_session_path %>
-    </div><br>
-<% end %>
-
-<% @posts.each do |post| %>
-    <div>
-        <%= post.title %><br>
-        <%= post.body %><br>
+<div class="tile is-ancestor">
+    <div class="tile is-3 ml-5">
         <% if user_signed_in? %>
-            <p>Written by: <%= post.user.username %></p>
+            <div>
+                Hello, <strong><%= current_user.username %></strong>!<br>
+                <%= link_to "edit account", edit_user_registration_path %>
+                <%= link_to "sign out", destroy_user_session_path, method: :delete %>
+            </div>
+        <% else %>
+            <div>
+                <%= link_to "sign up", new_user_registration_path %>
+                <%= link_to "sign in", new_user_session_path %>
+            </div><br>
         <% end %>
-    </div><br>
-<% end %> 
+    </div>
+
+    <div class="tile">
+    
+    <div class="tile is-vertical">
+        <% @posts.each do |post| %>
+        <div class="p-4 has-text-centered">
+                <%= post.title %><br>
+                <%= post.body %><br>
+                <% if user_signed_in? %>
+                    <p class="has-text-right has-text-weight-bold pr-6">Written by: <%= post.user.username %></p>
+                <% end %>
+                </div>
+        <% end %>
+        </div>
+    </div>
+
+    <div class="tile is-3"></div>
+</div>
