@@ -19,7 +19,7 @@
     <div class="tile is-vertical">
         <% @posts.each do |post| %>
         <div class="p-4 has-text-centered">
-                <%= post.title %><br>
+                <p class="is-size-4"><%= post.title %></p>
                 <%= post.body %><br>
                 <% if user_signed_in? %>
                     <p class="has-text-weight-bold">Written by: <%= post.user.username %></p>
