@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     def index
-        @posts = Post.all
+        @posts = Post.all.order("created_at DESC")
     end
 
     def new
@@ -9,8 +9,15 @@ class PostsController < ApplicationController
 
     def create
         @post = Post.new(post_params)
-        @post.save
-        redirect_to @post
+        @post.user_id = current_user.id if current_user
+        
+        if @post.save
+            flash.notice = "Post created"
+        else
+            flash.alert = "Problem generating post"
+        end
+
+        redirect_to posts_path
     end
 
     private
