@@ -11,8 +11,11 @@
 
   <body>
     <div class="title has-text-centered is-size-1 p-6 has-background-black has-text-white-bis">Members Only</div>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    
+    
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "flashes" %>
+    <% end %>
 
     <%= yield %>
   </body>
