@@ -1,7 +1,7 @@
 databases:
-  - name: membersonly
+  - name: members-only
     databaseName: membersonlydb
-    user: members-only
+    user: membersonly
 
 services:
   - type: web
